@@ -21,3 +21,4 @@ A full-stack blog web application built with Node.js, Express, MongoDB, and Reac
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB Atlas, Mongoose
 - **Tools**: Git, GitHub, Dotenv
+<!-- Module 3 MongoDB configuration guidelines -->
