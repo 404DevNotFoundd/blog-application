@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App - Create</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">DevBlog</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <div class="container dashboard-layout">
+        <aside class="sidebar">
+            <h3>Menu</h3>
+            <ul style="margin-top: 1rem;">
+                <li><a href="dashboard.html">My Posts</a></li>
+                <li><a href="create-blog.html" style="color: var(--primary-color); font-weight: bold;">Create New Blog</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="card" style="max-width: 100%;">
+                <h2>Write a New Blog</h2>
+                <form id="createBlogForm" style="margin-top: 1.5rem;">
+                    <div class="form-group">
+                        <label>Blog Title</label>
+                        <input type="text" required placeholder="Enter title here...">
+                    </div>
+                    <div class="form-group">
+                        <label>Cover Image URL</label>
+                        <input type="url" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea rows="10" required placeholder="Write your blog content here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: auto;">Publish Blog</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
