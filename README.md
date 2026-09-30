@@ -1,6 +1,6 @@
 # Blog Application (Module 1 & 2)
 
-This repository contains the complete frontend and backend code for the Blog Application.
+This repository contains the complete frontend and backend code for the Blog Application
 
 ## Folder Structure
 - `frontend/`: Contains all HTML, CSS, and JS files.
