@@ -1,24 +1,23 @@
-# Blog Application (Module 1 & 2)
+# Full-Stack Blog Application
 
-This repository contains the complete frontend and backend code for the Blog Application
+A full-stack blog web application built with Node.js, Express, MongoDB, and React.
 
-## Folder Structure
-- `frontend/`: Contains all HTML, CSS, and JS files.
-- `backend/`: Contains the Node.js/Express server and APIs.
+## Progress Overview
 
-## How to Run
+### Module 1: Project Setup & Structure
+- Created project folder structure separating frontend and backend.
+- Initialized local Git repository and connected to GitHub.
 
-1. **Start the Backend Server:**
-   - Open your terminal and navigate to the `backend` folder: `cd backend`
-   - Install dependencies: `npm install`
-   - Start the server: `node server.js`
-   - The server will run on `http://localhost:3000`. Keep this terminal running.
+### Module 2: Backend & Frontend Initialization
+- Initialized Node.js backend with `server.js`.
+- Created frontend application structure and verified local serving.
 
-2. **Run the Frontend:**
-   - You can simply open `frontend/index.html` in your web browser.
-   - Alternatively, for a better experience, open the `frontend` folder in VS Code and use the "Live Server" extension to serve the files.
+### Module 3: Database Integration
+- **Database Connection**: Connected MongoDB Atlas cluster (`cluster0`) to the Express backend using Mongoose.
+- **Environment & Security**: Configured environment variables (`.env`) to securely handle credentials, and added `.gitignore` to prevent sensitive files and `node_modules` from pushing to GitHub.
+- **Dependencies Setup**: Installed core packages (`express`, `mongoose`, `dotenv`, `bcryptjs`, `cors`).
 
-3. **Test the Application:**
-   - Create an account on the Register page.
-   - Login with those credentials.
-   - Create a new blog from the Dashboard. The frontend will communicate with the Node.js backend using the Fetch API.
+## Tech Stack
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB Atlas, Mongoose
+- **Tools**: Git, GitHub, Dotenv
