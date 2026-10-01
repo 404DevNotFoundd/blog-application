@@ -13,6 +13,12 @@ const BlogSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
+  // ADD THIS FIELD: Links the blog post to the specific user's MongoDB ID
+  authorId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: true 
+  },
   category: { 
     type: String, 
     default: 'General' 

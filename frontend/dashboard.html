@@ -1,36 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog App - Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>User Dashboard | DevBlog</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="index.html" class="logo">DevBlog</a>
-        <a href="index.html">Logout</a>
-    </nav>
-
-    <div class="container dashboard-layout">
-        <aside class="sidebar">
-            <h3>Menu</h3>
-            <ul style="margin-top: 1rem;">
-                <li><a href="dashboard.html" style="color: var(--primary-color); font-weight: bold;">My Posts</a></li>
-                <li><a href="create-blog.html">Create New Blog</a></li>
-                <li><a href="#">Profile Settings</a></li>
-            </ul>
-        </aside>
-
-        <main class="main-content">
-            <h2>My Dashboard</h2>
-            <div class="blog-card" style="margin-top: 1.5rem;">
-                <h3>Your Published Articles (1)</h3>
-                <hr style="margin: 1rem 0; border: 0; border-top: 1px solid #eee;">
-                <h4>Getting Started with HTML</h4>
-                <p style="color: #666; font-size: 0.9rem;">Published: Oct 1, 2026</p>
-            </div>
-        </main>
+  <!-- Navigation Header -->
+  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
+    <h2>DevBlog Dashboard</h2>
+    <div>
+      <span id="userGreeting" style="font-weight: bold; margin-right: 15px;"></span>
+      <button onclick="logout()" style="background: #ef4444; color: white; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer;">Logout</button>
     </div>
+  </nav>
+
+  <div style="max-width: 900px; margin: 30px auto; padding: 0 20px;">
+    <!-- Profile Card -->
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+      <h3 style="margin-top: 0;">Profile Information</h3>
+      <p><strong>Username:</strong> <span id="profileUsername">...</span></p>
+      <p><strong>Email:</strong> <span id="profileEmail">...</span></p>
+    </div>
+
+    <!-- My Blogs Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h3>My Published Posts</h3>
+      <a href="create-blog.html" style="background: #7c3aed; color: white; padding: 10px 18px; border-radius: 6px; text-decoration: none;">+ Create New Blog</a>
+    </div>
+
+    <!-- Container for Logged-In User's Blogs -->
+    <div id="userBlogContainer">
+      <!-- User's posts render here dynamically -->
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script>
+    // 1. ROUTE GUARD: Verify JWT Token exists in localStorage
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    if (!token || !user.id) {
+      alert('Access restricted. Please log in first.');
+      window.location.href = 'login.html';
+    } else {
+      document.getElementById('userGreeting').innerText = `Hello, ${user.username}`;
+      document.getElementById('profileUsername').innerText = user.username;
+      document.getElementById('profileEmail').innerText = user.email;
+      fetchMyBlogs();
+    }
+
+    // 2. FETCH ONLY LOGGED-IN USER'S BLOGS
+    async function fetchMyBlogs() {
+      try {
+        const res = await fetch('http://localhost:3000/api/blogs/user/me', {
+          headers: { 
+            'Authorization': `Bearer ${token}` 
+          }
+        });
+
+        if (!res.ok) throw new Error('Failed to load user blogs');
+
+        const blogs = await res.json();
+        const container = document.getElementById('userBlogContainer');
+
+        if (blogs.length === 0) {
+          container.innerHTML = '<p>You have not published any posts yet.</p>';
+          return;
+        }
+
+        container.innerHTML = blogs.map(blog => `
+          <div class="card" style="border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; margin-bottom: 16px; background: white;">
+            <span style="background: #f3e8ff; color: #6b21a8; padding: 4px 8px; border-radius: 4px; font-size: 12px;">${blog.category || 'General'}</span>
+            <h4 style="margin: 10px 0 5px 0;">${blog.title}</h4>
+            <p>${blog.content.substring(0, 100)}...</p>
+            <div style="margin-top: 10px;">
+              <a href="edit-blog.html?id=${blog._id}">Edit</a> | 
+              <button onclick="deleteBlog('${blog._id}')" style="color: #ef4444; background: none; border: none; cursor: pointer;">Delete</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error fetching dashboard posts:', err);
+      }
+    }
+
+    // 3. LOGOUT FUNCTIONALITY
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      alert('Successfully logged out!');
+      window.location.href = 'login.html';
+    }
+  </script>
 </body>
 </html>
