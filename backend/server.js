@@ -65,4 +65,4 @@ app.post('/api/blogs', (req, res) => {
 // Start the server
 app.listen(PORT, () => {
     console.log(`Backend server is running on http://localhost:${PORT}`);
-});
+});// Server configuration and endpoints loaded 
