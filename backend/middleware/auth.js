@@ -18,4 +18,4 @@ module.exports = function (req, res, next) {
   } catch (err) {
     res.status(400).json({ error: 'Invalid or expired token.' });
   }
-};
+};// JWT verification logic added 
