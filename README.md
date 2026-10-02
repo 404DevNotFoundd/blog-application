@@ -13,3 +13,4 @@ A multi-user blogging platform featuring JWT authentication, protected API endpo
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas (Mongoose ORM)
 - **Security:** JSON Web Tokens (JWT), CORS, bcryptjs
+- https://blog-applicationn.netlify.app/
