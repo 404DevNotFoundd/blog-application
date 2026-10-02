@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'https://devblog-backend-i8cj.onrender.com/api';
 
 // --- AUTHENTICATION FUNCTIONS ---
 
