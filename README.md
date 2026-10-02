@@ -1,25 +1,15 @@
-# Full-Stack Blog Application
+# 📝 DevBlog - Full-Stack Web Application
 
-A full-stack blog web application built with Node.js, Express, MongoDB, and React.
+A multi-user blogging platform featuring JWT authentication, protected API endpoints, dynamic search filtering, and personalized user dashboards.
 
-## Progress Overview
+## 🚀 Features
+- **User Authentication:** Secure registration and login using JWT and `bcryptjs`.
+- **Personal Dashboard:** Author-restricted post management (CRUD).
+- **Public Feed:** Article search and category filtering without authentication.
+- **Responsive UI:** Mobile-first, adaptable interface.
 
-### Module 1: Project Setup & Structure
-- Created project folder structure separating frontend and backend.
-- Initialized local Git repository and connected to GitHub.
-
-### Module 2: Backend & Frontend Initialization
-- Initialized Node.js backend with `server.js`.
-- Created frontend application structure and verified local serving.
-
-### Module 3: Database Integration
-- **Database Connection**: Connected MongoDB Atlas cluster (`cluster0`) to the Express backend using Mongoose.
-- **Environment & Security**: Configured environment variables (`.env`) to securely handle credentials, and added `.gitignore` to prevent sensitive files and `node_modules` from pushing to GitHub.
-- **Dependencies Setup**: Installed core packages (`express`, `mongoose`, `dotenv`, `bcryptjs`, `cors`).
-
-## Tech Stack
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB Atlas, Mongoose
-- **Tools**: Git, GitHub, Dotenv
-<!-- Module 3 MongoDB configuration guidelines -->
-### Module 5: JWT Authentication Added 
+## 🛠️ Tech Stack
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript (Fetch API)
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas (Mongoose ORM)
+- **Security:** JSON Web Tokens (JWT), CORS, bcryptjs
