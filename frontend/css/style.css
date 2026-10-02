@@ -140,4 +140,5 @@ body {
     flex-direction: column;
   }
 }
-/* Custom layout tweaks */
+/* Custom layout tweaks *//* Mobile Responsiveness */ 
+@media (max-width: 768px) { nav { flex-direction: column; gap: 10px; } .card { margin: 10px; } } 
