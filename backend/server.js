@@ -66,3 +66,4 @@ app.post('/api/blogs', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Backend server is running on http://localhost:${PORT}`);
 });// Server configuration and endpoints loaded 
+// Dynamic port binding for production hosting 
